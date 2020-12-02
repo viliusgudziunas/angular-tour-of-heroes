@@ -9,7 +9,6 @@
 .heroes li {
   cursor: pointer;
   position: relative;
-  left: 0;
   background-color: #eee;
   margin: 0.5em;
   padding: 0.3em 0;
@@ -23,14 +22,16 @@
   left: 0.1em;
 }
 
-.heroes li.selected {
-  background-color: #cfd8fc;
-  color: white;
+.heroes a {
+  color: #333;
+  text-decoration: none;
+  position: relative;
+  display: block;
+  width: 250px;
 }
 
-.heroes li.selected:hover {
-  background-color: #bbd8dc;
-  color: white;
+.heroes a:hover {
+  color: #607d8b;
 }
 
 .heroes .badge {
@@ -44,6 +45,8 @@
   left: -1px;
   top: -4px;
   height: 1.8em;
+  min-width: 16px;
+  text-align: right;
   margin-right: 0.8em;
   border-radius: 4px 0 0 4px;
 }
