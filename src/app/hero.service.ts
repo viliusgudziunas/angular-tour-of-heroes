@@ -61,6 +61,20 @@ export class HeroService {
     )
   }
 
+  /** GET heroes whose name contains search term */
+  searchHeroes(term: string): Observable<Hero[]> {
+    // if not seach term, return empty hero array
+    if (!term.trim()) { return of([])}
+
+    const url = `${this.heroesUrl}/?name=${term}`
+    return this.http.get<Hero[]>(url).pipe(
+      tap(x => x.length ?
+        this.log(`found heroes matching "${term}"`) :
+        this.log(`no heroes matching "${term}"`)),
+      catchError(this.handleError<Hero[]>("searchHeroes", []))
+    )
+  }
+
   private heroesUrl = "api/heroes" // URL to web api
 
   private log(message: string) {
